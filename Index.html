@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Khushbu 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            max-width: 520px;
+            text-align: center;
+            animation: fadeIn 2s ease;
+            position: relative;
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        #text {
+            font-size: 18px;
+            color: #333;
+            min-height: 140px;
+            margin-top: 20px;
+            white-space: pre-line;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            background: #ff4d6d;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e63950;
+        }
+
+        .signature {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #888;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .heart {
+            position: absolute;
+            color: white;
+            font-size: 18px;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {transform: translateY(100vh);}
+            100% {transform: translateY(-10vh);}
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Hey Khushbu 💖</h1>
+    <div id="text"></div>
+    <button onclick="startMessage()">Click Here ✨</button>
+    <div class="signature" id="sign">Made with ❤️ by Bhanu</div>
+</div>
+
+<script>
+
+const message = `
+Sach kahu to aadat si ho gayi hai tumhari presence ki 💫
+
+Main zyada emotional nahi hota normally… par tumhare jaane ka soch ke thoda sa feel ho raha hai 🥺
+Shayad isliye kyunki tum sirf normal friend nahi ho ❤️
+
+Jab tum wapis aaogi na… tab ye chhoti chhoti late night baatein aur bhi special lagenge ✨
+
+Aur haan… mujhe mere exam ke time tumhara thoda sa support chahiye tha 🙂
+Par koi baat nahi… shayad timing hi aisi thi.
+
+Bas itna sa tha kehna…
+Thank you for being you 🌸
+
+I am always here for you 🤍
+`;
+
+let index = 0;
+
+function startMessage() {
+    document.querySelector("button").style.display = "none";
+    typeEffect();
+}
+
+function typeEffect() {
+    if (index < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeEffect, 35);
+    } else {
+        document.getElementById("sign").style.opacity = "1";
+    }
+}
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 600);
+
+</script>
+
+</body>
+</html>
